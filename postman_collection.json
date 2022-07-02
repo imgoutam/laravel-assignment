@@ -1,0 +1,501 @@
+{
+	"info": {
+		"_postman_id": "58dde937-2b0f-4e32-adf7-cbba2b1d1bf8",
+		"name": "Laravel assignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12993827"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "goutam",
+									"type": "default"
+								},
+								{
+									"key": "email",
+									"value": "goutam-test@gmail.com",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "default"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "password",
+									"type": "default"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "default",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/auth/register",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "goutam",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "goutam-test@gmail.com",
+									"type": "default"
+								},
+								{
+									"key": "password",
+									"value": "password",
+									"type": "default"
+								},
+								{
+									"key": "password_confirmation",
+									"value": "password",
+									"type": "default",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/auth/login",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "product",
+			"item": [
+				{
+					"name": "create product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Demo Product",
+									"type": "default"
+								},
+								{
+									"key": "price",
+									"value": "10",
+									"type": "default"
+								},
+								{
+									"key": "description",
+									"value": "demo test",
+									"type": "default"
+								},
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/C:/Users/user/Desktop/Laravel Api Task/test-db-structure.png"
+								},
+								{
+									"key": "category_id",
+									"value": "1",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/products",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get single product",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/products/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"products",
+								"1"
+							],
+							"query": [
+								{
+									"key": "acc",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "DELETE",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/products/8",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"products",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get products",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/products/",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"products",
+								""
+							],
+							"query": [
+								{
+									"key": "acc",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "cart",
+			"item": [
+				{
+					"name": "get cart items",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYjJkNDhmM2UzZWJkZTA1ZDUyMjVhMTAzMWI3YjM2NWViMWM1YTBlY2ZmZmNkNzEwYmRlYjlkNjYxZTc2MjQzYzI0NWI3ZDhlZWY0MDQ1MWEiLCJpYXQiOjE2NTY3NzA3OTMuNDk5NzE3LCJuYmYiOjE2NTY3NzA3OTMuNDk5NzIxLCJleHAiOjE2ODgzMDY3OTMuNDUyMzQ2LCJzdWIiOiI3Iiwic2NvcGVzIjpbXX0.b5IJXqEcLsSXUmWNi1DLpbDjkbi5QmCcgMeWOKCeA3v-t1byHv58CmKH6sZJaqS0w6dcyiRTQRr528YTfjpzQscayatXjaVsmbbsxw-lt9anT9DkxONFcyyH25xB6A6k8F6k7rnDNHCYUPBqGKJnoj0dToJAI7sIwHMBKzKe3-WqwhbdRmwpXOkFphbQwn5vlY8iQVvKYZievHzpj5AGwXd_kJScl8s9lUjn8pHUxaN5UruFRQm6kN8926rLMLwSoZzPtXZP6GgSt09zbb-4YBwwBZvwl7K77xmECmXTJHdSJ0Z67hiOQCtAe76WA9ubVmC00Q-bsdgQDeXB_Gnt8WUrbEn0txnL-SwBRVSUNJl8aZkUfbp25Zdv0VofXIAJ9ss8NDVZP7jOoZGRiAj7-8Rk2PKuDqfBd41q6MCdhgYpo92sidir0Gybf2MptguO3MJqBWvp6mEDHZPa4JZ_zdI9fHYWiZohZJo0bwqdKodm-vwqJmbn7zpWMATKIvd-jmDGiVjVsyBCCH_j1jFuxuA0Rf6Lhn7MuxGKvyb8tLo9z2BamLP9S2Ucd4OZpSx2x4XRzBxBAhK1o8rCeVKZtx-zagBSqTxKPWFpowSpBK1uR7MOt-xPuhuZuxmjKh3iZRSufwWtR7AspSlygB1UvxgGIg75kv0G1vWitGSYnu8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/cart",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update cart item",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMDY3ODA5NDBlZWM3MzY3ZTYwYWNjZGI2MjA4ZGYwNWQxOTgxY2NlYjczNTk4NzY1N2Q2OWU1YmVlMmFlNDg5ZGY4NDM2OGM5Mzg1NjE2NTMiLCJpYXQiOjE2NTY3NzI4NjkuMzcwMzkzLCJuYmYiOjE2NTY3NzI4NjkuMzcwMzk3LCJleHAiOjE2ODgzMDg4NjkuMzE4MDk2LCJzdWIiOiI3Iiwic2NvcGVzIjpbXX0.YseeeMHCXBf0z8odqHHS60-8-QM1Nue4ZQXxGZdMas5a2k8ob9-rztgoXJ9rATROx0GDIxmVoejVq5LWxUO7xMrJ7FjhE64VSMgHcjcmxz8aGZRTjPUkwaOIxSAWy_ThtrgY5TJRuXQBLDi4BhcNt8D9czImivsxURivUUNaMa9Kf2f_t42KucJQn0kG8AotdTSFjE0IGfm89075xpqHYOmiPb45zj8n-mNY_MBO4NDlZy6u3j0qRVDnphXP-HeyZmjAqOD_vUzTsktKg63JPX9FhM53H_gJ1WnWMwVURoekDix8yrLltHPqC9t75b9EhfJ2DrsRi1z52G7j98t4wae4jn8EoBVj4C2pzYYGpEb2_6Djhcd_FxO8LQf8KvA1uvNZPWXaFG7dZZow_hwaKZJVbONT2v6D1UksrFAFK9jyIBTuuySqEdj45jMoJQqQD9R6Ih-7CLQOIPD_Q-oVWAElIms5OmHvMXJGZnoY9NWL8qGoiGzohTMj8zVEsJWSH0nC9JrtwBfHKeg6HzR4e4SXX2gDZVuLpodIFTpcithMqpK5_Enlm76NKwynMwRJN_E_qlnZ4WNCRXHtTAQC9Cqvda5skV2ZdX_7mH2qPQK3iu9gkxFN4SBPXlQKqinBu55uL6aOElVQlIomhBTa1VAlyIcxMl5ScWcJDGs9rdI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "PUT",
+									"type": "default"
+								},
+								{
+									"key": "product_id",
+									"value": "1",
+									"type": "default"
+								},
+								{
+									"key": "qty",
+									"value": "12",
+									"type": "default"
+								},
+								{
+									"key": "cart_session_id",
+									"value": "1lwMUZpwRnSlqNjvy1sc",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/cart/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"cart",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMDY3ODA5NDBlZWM3MzY3ZTYwYWNjZGI2MjA4ZGYwNWQxOTgxY2NlYjczNTk4NzY1N2Q2OWU1YmVlMmFlNDg5ZGY4NDM2OGM5Mzg1NjE2NTMiLCJpYXQiOjE2NTY3NzI4NjkuMzcwMzkzLCJuYmYiOjE2NTY3NzI4NjkuMzcwMzk3LCJleHAiOjE2ODgzMDg4NjkuMzE4MDk2LCJzdWIiOiI3Iiwic2NvcGVzIjpbXX0.YseeeMHCXBf0z8odqHHS60-8-QM1Nue4ZQXxGZdMas5a2k8ob9-rztgoXJ9rATROx0GDIxmVoejVq5LWxUO7xMrJ7FjhE64VSMgHcjcmxz8aGZRTjPUkwaOIxSAWy_ThtrgY5TJRuXQBLDi4BhcNt8D9czImivsxURivUUNaMa9Kf2f_t42KucJQn0kG8AotdTSFjE0IGfm89075xpqHYOmiPb45zj8n-mNY_MBO4NDlZy6u3j0qRVDnphXP-HeyZmjAqOD_vUzTsktKg63JPX9FhM53H_gJ1WnWMwVURoekDix8yrLltHPqC9t75b9EhfJ2DrsRi1z52G7j98t4wae4jn8EoBVj4C2pzYYGpEb2_6Djhcd_FxO8LQf8KvA1uvNZPWXaFG7dZZow_hwaKZJVbONT2v6D1UksrFAFK9jyIBTuuySqEdj45jMoJQqQD9R6Ih-7CLQOIPD_Q-oVWAElIms5OmHvMXJGZnoY9NWL8qGoiGzohTMj8zVEsJWSH0nC9JrtwBfHKeg6HzR4e4SXX2gDZVuLpodIFTpcithMqpK5_Enlm76NKwynMwRJN_E_qlnZ4WNCRXHtTAQC9Cqvda5skV2ZdX_7mH2qPQK3iu9gkxFN4SBPXlQKqinBu55uL6aOElVQlIomhBTa1VAlyIcxMl5ScWcJDGs9rdI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "default"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZmU1ZGMwNTkzYjAwMTRjZDBkOTBhNDk4NjNkNGYzZmIyNmJkZWJkOTI3ZTc0ZWQ5M2MwMDZjNmE5MmVkYWRmMDM3YzlhZjBlYjhkZDhkYjIiLCJpYXQiOjE2NTY1MjcxMzMuNTcwNjUyLCJuYmYiOjE2NTY1MjcxMzMuNTcwNjU3LCJleHAiOjE2ODgwNjMxMzMuNTA0NDYzLCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.grhDS12Rke8yRiMBaF9Yn9GhqxlIvnYG-D5stx_dUYJwoI3BDCItK7TCf9NYiiWOFUK6r-0OvAfcSDi__Q3XQDWwto7RE7rOhC791JS73QV5OTv3v-QdAzBUgwOc_E7V_OmelsbINwvbr8gIv8qeOpM6Ymkms1OsdQaMU9o3254EmERRnkePBjICgln2UmN-Itqc3t_2Rm6qm11n6qJiHfG2W7Fqr9kLXwkGTwYGb6kL9a_pWtyjhA-mRL5ywwmNh-1vQGtRVrafAp3yxb7SapBpXac7Fi5EYoIf7wmSgMPjRsvdibn4z6fkWwzECSmXM0HWMZqq1vPQc_ccdEOBQdnwASIHIjgtcUmnIC2Yn7CIrFAIAQZaxwrB2stmdd1fWkisfjREpI41ktHMROJvL-TKhjLbi6AE4ZFc96-y0A7cPeFdXebX0D83PYA_a5yTKnoVGbIUueIh_Us0KuSmr6SyNcNNtLEOKfNuE26o6B4eGmJoH5NEdbbgi7ai6muujf-aAz4bRDdh3Bpk4mcaPjkJt-Rp9LDkGhcOqM7je6gbhvQBWGM6dfjiJK0B8k3h_ZmP6QGTvULA_0L4XXOdFRlZxTBH3tOXAfkIdXYWPxO2X1gkoNNRtL-WJgtARM3As06vto9EhG5K_cXr03MqjLvZ_crunwFfcELewQSzTdI",
+								"type": "default",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "",
+									"value": "",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"type": "file",
+									"src": [],
+									"disabled": true
+								},
+								{
+									"key": "product_id",
+									"value": "13",
+									"type": "default"
+								},
+								{
+									"key": "session_id",
+									"value": "rwrwrrwryyghgghrrr",
+									"type": "default",
+									"disabled": true
+								},
+								{
+									"key": "qty",
+									"value": "10",
+									"type": "default"
+								},
+								{
+									"key": "cart_session_id",
+									"value": "vv6pipIgI0BLCaJRUgOG",
+									"type": "default",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/cart",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"cart"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete cart",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiMDY3ODA5NDBlZWM3MzY3ZTYwYWNjZGI2MjA4ZGYwNWQxOTgxY2NlYjczNTk4NzY1N2Q2OWU1YmVlMmFlNDg5ZGY4NDM2OGM5Mzg1NjE2NTMiLCJpYXQiOjE2NTY3NzI4NjkuMzcwMzkzLCJuYmYiOjE2NTY3NzI4NjkuMzcwMzk3LCJleHAiOjE2ODgzMDg4NjkuMzE4MDk2LCJzdWIiOiI3Iiwic2NvcGVzIjpbXX0.YseeeMHCXBf0z8odqHHS60-8-QM1Nue4ZQXxGZdMas5a2k8ob9-rztgoXJ9rATROx0GDIxmVoejVq5LWxUO7xMrJ7FjhE64VSMgHcjcmxz8aGZRTjPUkwaOIxSAWy_ThtrgY5TJRuXQBLDi4BhcNt8D9czImivsxURivUUNaMa9Kf2f_t42KucJQn0kG8AotdTSFjE0IGfm89075xpqHYOmiPb45zj8n-mNY_MBO4NDlZy6u3j0qRVDnphXP-HeyZmjAqOD_vUzTsktKg63JPX9FhM53H_gJ1WnWMwVURoekDix8yrLltHPqC9t75b9EhfJ2DrsRi1z52G7j98t4wae4jn8EoBVj4C2pzYYGpEb2_6Djhcd_FxO8LQf8KvA1uvNZPWXaFG7dZZow_hwaKZJVbONT2v6D1UksrFAFK9jyIBTuuySqEdj45jMoJQqQD9R6Ih-7CLQOIPD_Q-oVWAElIms5OmHvMXJGZnoY9NWL8qGoiGzohTMj8zVEsJWSH0nC9JrtwBfHKeg6HzR4e4SXX2gDZVuLpodIFTpcithMqpK5_Enlm76NKwynMwRJN_E_qlnZ4WNCRXHtTAQC9Cqvda5skV2ZdX_7mH2qPQK3iu9gkxFN4SBPXlQKqinBu55uL6aOElVQlIomhBTa1VAlyIcxMl5ScWcJDGs9rdI",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "_method",
+									"value": "DELETE",
+									"type": "default"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/cart/46",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"cart",
+								"46"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
