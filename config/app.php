@@ -212,4 +212,6 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 
+    'product_images_dir' => env('PRODUCT_IMAGES_DIR'),
+
 ];
