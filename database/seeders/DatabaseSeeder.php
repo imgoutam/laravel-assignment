@@ -2,8 +2,14 @@
 
 namespace Database\Seeders;
 
+use App\Models\Cart;
+use App\Models\Category;
+use App\Models\Product;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Arr;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -14,11 +20,30 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        Category::factory()
+            ->count(2)
+            ->hasProducts(10)
+            ->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $products = Product::all();
+
+        User::factory()
+            ->count(5)
+            ->create()
+            ->each(function ($user) use ($products) {
+                Cart::factory(rand(5, 10))->create([
+                    'user_id' => Arr::random([$user->id, null], 1)[0],
+                ])->each(function ($cart) use ($products) {
+                    $items = [];
+                    foreach ($products->random(5)->take(rand(1, 5)) as $product) {
+                        $qty = rand(1, 5);
+                        $items[$product->id] = [
+                            'qty' => $qty,
+                            'total_price' => $qty * $product->price,
+                         ];
+                    }
+                    $cart->products()->attach($items);
+                });
+            });
     }
 }
