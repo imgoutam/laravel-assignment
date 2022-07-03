@@ -74,7 +74,7 @@ class CartController extends Controller
 
         $cart = Cart::where('session_id', $validated['cart_session_id'])->firstOrFail();
 
-        // if the user is authenticated but cart does not contain user_id
+        // if the user is authenticated but cart user_id does not match with authenticated user then send Unauthorized message
         if (!is_null($request->user('api')) && !is_null($cart->user_id) && $cart->user_id !== $request->user('api')->id) {
             return response([
                 'message' => 'Unauthorized',
